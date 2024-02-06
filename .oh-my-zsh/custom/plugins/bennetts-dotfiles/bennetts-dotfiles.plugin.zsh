@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 SOURCE_DIR_RAW="$(dirname "${0}")/../../../.."
-SOURCE_DIR="$( cd "${SOURCE_DIR}" && echo "${PWD}" )"
+SOURCE_DIR="$( cd "${SOURCE_DIR_RAW}" && echo "${PWD}" )"
 
 dotfiles_are_committed() {
   ( cd "${SOURCE_DIR}" && test -z "$(git status --porcelain)" )
