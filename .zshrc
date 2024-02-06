@@ -137,3 +137,4 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 export PATH="${HOME}/.bin:$PATH"
 
+eval "$(rbenv init - zsh)"
