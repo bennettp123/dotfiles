@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-SOURCE_DIR_RAW="$(dirname "${0}")/../../../.."
+SOURCE_DIR_RAW="${HOME}/src/dotfiles"
 SOURCE_DIR="$( cd "${SOURCE_DIR_RAW}" && echo "${PWD}" )"
 
 dotfiles_are_committed() {
