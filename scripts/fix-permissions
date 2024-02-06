@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TARGET_DIR="${1:-${HOME}}"
+
+# special handling for certain folders
+chmod go-rw "${TARGET_DIR}/.ssh"
+

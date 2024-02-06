@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#
+# Search for folders in SOURCE_DIR and create them in TARGET_DIR
+#
+# GNU stow doesn't symlink files; it symlinks entire folders! This isn't
+# desired for most files; for example, we want to manage ~/.ssh/config
+# but not ~/.ssh/id_rsa
+#
+# see also: fix-permissions
+# 
+
+set -e -o pipefail
+
+SOURCE_DIR="$(dirname "$(dirname "${0}")")"
+TARGET_DIR="${1:-${HOME}}"
+
+cd "${SOURCE_DIR}"
+
+find . -type d \
+    -not -path '.' \
+    -not -path './.git*' \
+    -not -path './scripts*' \
+| sed 's/^\.\///' \
+| xargs -I "%" mkdir -v -p "${TARGET_DIR}/%" \
+| xargs -I "%" echo "created %"
+
+

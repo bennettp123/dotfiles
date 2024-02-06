@@ -1,0 +1,29 @@
+#!/bin/sh
+if [[ `uname` != "Darwin" ]]; then
+    echo "Not a Mac. Exiting..." >&2
+    exit 1
+fi
+
+#
+# Finder
+#
+
+# Show file extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Expand the save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Avoiding creating stupid .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+#  killall
+for app in Finder Dock SystemUIServer
+do
+    killall "$app" > /dev/null 2>&1
+done
+
