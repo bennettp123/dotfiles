@@ -113,7 +113,7 @@ fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 source /opt/homebrew/share/zsh/site-functions/aws_zsh_completer.sh
 
-source "${HOME}/.aws-script-from-ryan.sh"
+source "${HOME}/.aws-helpers.sh"
 
 path=($HOME/.docker/bin $path)
 
