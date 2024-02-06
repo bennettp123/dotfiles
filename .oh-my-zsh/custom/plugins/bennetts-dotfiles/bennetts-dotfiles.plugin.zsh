@@ -8,7 +8,7 @@ dotfiles_are_committed() {
 }
 
 changes_are_pushed() {
-  ( cd "${SOURCE_DIR}" && test -z "$(git log --branches --not --remotes)" )
+  ( cd "${SOURCE_DIR}" && test -z "$(git log HEAD --not --remotes)" )
 }
 
 DOTFILE_WARNING="${fg[red]}$(<<EOF
