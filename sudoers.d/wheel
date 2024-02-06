@@ -1,2 +1,0 @@
-# grant all with no password to wheel
-%admin            ALL = (ALL) NOPASSWD: ALL
