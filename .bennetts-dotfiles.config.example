@@ -1,0 +1,6 @@
+# This is where your dotfiles are stored
+#DOTFILES_SOURCE="${HOME}.dotfiles"
+
+# This is where your dotfiles are installed.
+#DOTFILES_TARGET=${HOME}
+

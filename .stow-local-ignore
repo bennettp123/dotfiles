@@ -1,6 +1,10 @@
-# This is the default ignore list
+# These are overrides for scripts and config used by this repo
 
 ^scripts
+^.bennetts-dotfiles.config.example
+
+
+# This is the default ignore list
 
 # Comments and blank lines are allowed.
 
