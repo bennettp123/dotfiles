@@ -9,7 +9,7 @@ fi
 #
 
 # Show file extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults delete NSGlobalDomain "AppleShowAllExtensions"
 
 # Expand the save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
