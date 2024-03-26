@@ -138,3 +138,5 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="${HOME}/.bin:$PATH"
 
 eval "$(rbenv init - zsh)"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
