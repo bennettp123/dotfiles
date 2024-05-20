@@ -5,6 +5,15 @@ this is my dotfiles repo
 highly opinionated&mdash;if you want to use it, you may need to fork it first 😛
 
 
+## requirements
+
+* Nerd Fonts (such as [this one](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#meslo-nerd-font-patched-for-powerlevel10k))
+* `brew install chroma`
+* `brew install terminal-notifier`
+* `brew install neovim` (optional)
+* `brew install fzf`
+
+
 ## installing the dotfiles
 
 ```bash
@@ -25,10 +34,10 @@ stow . -t ~
 clean up any existing files before running the commands above.
 
 
-## shell helpers
+## custom helpers
 
-A custom helper script is installed for [https://ohmyz.sh](oh-my-zsh), which
-warns noisily if dotfiles are modified without being committed & pushed.
+A custom helper script is installed, which warns noisily if dotfiles are
+modified without being committed & pushed.
 
 There's currently no way to suppress this behaviour.
 
