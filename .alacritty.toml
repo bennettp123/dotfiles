@@ -1,0 +1,33 @@
+# https://alacritty.org/config-alacritty.html
+
+[font]
+size = 18.0
+
+[font.normal]
+family = "MesloLGS NF"
+
+[font.offset]
+x = 1
+y = 2
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[scrolling]
+history = 100000
+multiplier = 1
+
+[window]
+decorations = "Transparent"
+#option_as_alt = "Both"
+dynamic_padding = true
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 9
+y = 36
+
