@@ -19,7 +19,7 @@ history = 100000
 multiplier = 1
 
 [window]
-decorations = "Transparent"
+decorations = "Full"
 #option_as_alt = "Both"
 dynamic_padding = true
 
@@ -29,5 +29,5 @@ lines = 40
 
 [window.padding]
 x = 9
-y = 36
+y = 9
 
