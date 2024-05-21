@@ -16,8 +16,10 @@ y = 2
 [keyboard]
 bindings = [
   # https://stackoverflow.com/a/78008190
-  { key = "Right", mods = "Alt", chars = "\u001BF" },
-  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+  { key = "Right", mods = "Alt",           chars = "\u001BF" },
+  { key = "Left",  mods = "Alt",           chars = "\u001BB" },
+  { key = "Tab",   mods = "Control",       action = "SelectNextTab" },
+  { key = "Tab",   mods = "Control|Shift", action = "SelectNextTab" },
 ]
 
 [scrolling]
@@ -31,7 +33,7 @@ option_as_alt = "Both"
 dynamic_padding = true
 #opacity = 0.96
 #blur = true
-startup_mode = "Fullscreen"
+#startup_mode = "Fullscreen"
 
 [window.dimensions]
 columns = 120
