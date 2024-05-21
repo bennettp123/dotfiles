@@ -14,6 +14,13 @@ y = 2
 x = 0
 y = 0
 
+[keyboard]
+bindings = [
+  # https://stackoverflow.com/a/78008190
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+]
+
 [scrolling]
 history = 100000
 multiplier = 1
