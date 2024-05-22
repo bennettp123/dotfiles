@@ -19,7 +19,7 @@ bindings = [
   { key = "Right", mods = "Alt",           chars = "\u001BF" },
   { key = "Left",  mods = "Alt",           chars = "\u001BB" },
   { key = "Tab",   mods = "Control",       action = "SelectNextTab" },
-  { key = "Tab",   mods = "Control|Shift", action = "SelectNextTab" },
+  { key = "Tab",   mods = "Control|Shift", action = "SelectPreviousTab" },
 ]
 
 [scrolling]
