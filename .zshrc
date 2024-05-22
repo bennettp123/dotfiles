@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -122,4 +124,23 @@ fi
 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="${HOME}/.bin:$PATH"
+
+function _launch_docker_if_not_running() {
+    TIMEOUT=$(( $(date +%s) + 60))
+    if docker version >/dev/null 2>&1; then return 0; fi
+    echo "Launching Docker.app" >&2
+    if ! open -a Docker; then return 1; fi
+    while [ $(date +%s) -lt ${TIMEOUT} ]; do
+        if docker version >/dev/null 2>&1; then return 0; fi
+        sleep 1
+    done
+    echo "Timeout waiting for Docker.app" >&2
+    return 1
+}
+
+function _docker_wrapper() {
+    _launch_docker_if_not_running && docker "${@}"
+}
+
+alias docker=_docker_wrapper
 
