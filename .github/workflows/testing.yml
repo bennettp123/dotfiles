@@ -1,0 +1,11 @@
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello there!
+
