@@ -11,3 +11,6 @@ export DO_NOT_TRACK=1
 # enable colorized output for ls, etc
 export CLICOLOR=1
 
+# https://facebook.github.io/watchman/docs/config
+export WATCHMAN_CONFIG_FILE="${HOME:-~}/.watchman.json"
+
