@@ -14,3 +14,9 @@ export CLICOLOR=1
 # https://facebook.github.io/watchman/docs/config
 export WATCHMAN_CONFIG_FILE="${HOME:-~}/.watchman.json"
 
+# http://docs.fastlane.tools/getting-started/ios/setup/
+# fastlane needs UTF-8
+export LC_ALL=en_AU.UTF-8
+export LANG=en_AU.UTF-8
+
+
