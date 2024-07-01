@@ -3,6 +3,15 @@
 # a wrapper for docker that launches it if it's not running
 #  -- assumes macOS with Docker.app installed :p
 
+while [ "${0}" == "$(command -v docker)" ]; do
+    path_to_remove="$(dirname "${0}")"
+    PATH="${PATH[@]/$path_to_remove}"
+    if [ -z "$(echo "${PATH}" | sed 's/://g' 2>/dev/null)" ]; then
+        echo "could not find docker; not in path?" >&2
+	exit 1
+    fi
+done
+
 function _launch_docker_if_not_running() {
     TIMEOUT=$(( $(date +%s) + 60))
     if docker version >/dev/null 2>&1; then return 0; fi
@@ -15,6 +24,8 @@ function _launch_docker_if_not_running() {
     echo "Timeout waiting for Docker.app" >&2
     return 1
 }
+
+
 
 function _docker_wrapper() {
     if [ "$(sw_vers -productName 2>/dev/null)" == 'macOS' ]; then
