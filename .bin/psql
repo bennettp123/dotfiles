@@ -1,7 +1,9 @@
 #!/bin/bash -e
 
-# a wrapper for docker that launches it if it's not running
+# a wrapper for dropdb that launches it if it's not running
 #  -- assumes macOS with Docker.app installed :p
+
+set -x
 
 command="$(basename "${0}")"
 
@@ -19,22 +21,22 @@ if [ "${0}" == "$(command -v "${command}")" ]; then
     fi
 fi
 
-function _launch_docker_if_not_running() {
+function _launch_postgres_if_not_running() {
     TIMEOUT=$(( $(date +%s) + 60))
-    if docker version >/dev/null 2>&1; then return 0; fi
-    echo "Launching Docker.app" >&2
-    if ! open -a Docker; then return 1; fi
+    if psql -c 'SELECT 1;' >/dev/null 2>&1; then return 0; fi
+    echo "Launching Postgres.app" >&2
+    if ! open -g -a Postgres; then return 1; fi
     while [ $(date +%s) -lt ${TIMEOUT} ]; do
-        if docker version >/dev/null 2>&1; then return 0; fi
+        if psql -c 'SELECT 1;' >/dev/null 2>&1; then return 0; fi
         sleep 1
     done
-    echo "Timeout waiting for Docker.app" >&2
+    echo "Timeout waiting for Postgres.app" >&2
     return 1
 }
 
 function _wrapper() {
     if [ "$(sw_vers -productName 2>/dev/null)" == 'macOS' ]; then
-        _launch_docker_if_not_running
+        _launch_postgres_if_not_running
     fi
     "${command}" "${@}"
 }
