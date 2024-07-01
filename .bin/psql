@@ -3,8 +3,6 @@
 # a wrapper for dropdb that launches it if it's not running
 #  -- assumes macOS with Docker.app installed :p
 
-set -x
-
 command="$(basename "${0}")"
 
 if [ "${0}" == "$(command -v "${command}")" ]; then
