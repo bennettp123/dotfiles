@@ -1,4 +1,4 @@
-#!/bin/zsh -e
+#!/bin/bash -e
 
 # a wrapper for docker that launches it if it's not running
 #  -- assumes macOS with Docker.app installed :p
@@ -17,11 +17,11 @@ function _launch_docker_if_not_running() {
 }
 
 function _docker_wrapper() {
-    if [ "$(sw_vers --productName 2>/dev/null)" == 'macOS' ]; then
+    if [ "$(sw_vers -productName 2>/dev/null)" == 'macOS' ]; then
         _launch_docker_if_not_running
     fi
     docker "${@}"
 }
 
-docker_wrapper "${@}"
+_docker_wrapper "${@}"
 
