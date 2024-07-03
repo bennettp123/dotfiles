@@ -4,3 +4,5 @@ export PATH=$GEM_HOME/bin:$PATH
 . "$HOME/.cargo/env"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+eval "$(nodenv init - bash)"
+
