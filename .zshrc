@@ -97,6 +97,9 @@ if command -v nvim >/dev/null; then alias vim=nvim; fi
 #     --> add '@,:'
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>@,:'
 
+# initialize nodenv
+eval "$(nodenv init - zsh)"
+
 # other stuff below, possibly broken 🤷🏼😅
 
 
