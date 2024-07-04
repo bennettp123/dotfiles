@@ -84,9 +84,12 @@ zinit ice as"completion"; zinit snippet OMZP::docker/completions/_docker
 zinit snippet ~/.oh-my-zsh/custom/plugins/bennetts-dotfiles/bennetts-dotfiles.plugin.zsh
 
 # custom aliases
-alias aws-azure-login='AWS_PROFILE=aad nvm exec 20 -- aws-azure-login'
-alias lighthouse='nvm exec 20 -- lighthouse'
-alias lhci='nvm exec 20 -- lhci'
+#alias aws-azure-login='AWS_PROFILE=aad nvm exec 20 -- aws-azure-login'
+alias aws-azure-login='( nodenv shell 20.15.0 && AWS_PROFILE=aad nodenv exec aws-azure-login )'
+#alias lighthouse='nvm exec 20 -- lighthouse'
+alias lighthouse='( nodenv shell 20.15.0 && nodenv exec exec lighthouse'
+#alias lhci='nvm exec 20 -- lhci'
+alias lhci='( nodenv shell 20.15.0 && nodenv exec nvm exec lhci )'
 if command -v nvim >/dev/null; then alias vim=nvim; fi
 
 # custom stuff
