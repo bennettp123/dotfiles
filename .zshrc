@@ -131,3 +131,6 @@ fi
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="${HOME}/.bin:$PATH"
 
+# warn about missing dependencies
+source ~/.bin/_check_dependencies.zsh
+
