@@ -81,7 +81,7 @@ zinit snippet OMZP::brew
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::colorize
 zinit ice as"completion"; zinit snippet OMZP::docker/completions/_docker
-zinit snippet ~/.oh-my-zsh/custom/plugins/bennetts-dotfiles/bennetts-dotfiles.plugin.zsh
+zinit snippet ~/.zsh-plugins/bennetts-dotfiles/bennetts-dotfiles.plugin.zsh
 
 # custom aliases
 #alias aws-azure-login='AWS_PROFILE=aad nvm exec 20 -- aws-azure-login'
