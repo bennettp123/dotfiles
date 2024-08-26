@@ -1,0 +1,60 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+ACCOUNTS='
+devdigital:291971919224
+wandigital:949304525094
+perthnow:941214869665
+sevennews:048472964993
+thewest:435426432848
+thenightly:733367858111
+wanews:741858248043
+'
+
+PROFILES='
+devdigital:devdigital
+wandigital:wandigital
+perthnow:perthnow-prod
+sevennews:sevennews-prod
+thewest:thewest-prod
+thenightly:thenightly-prod
+wanews:wanews
+'
+
+AWS_REGION="${AWS_REGION:-ap-southeast-2}"
+
+get_account_number() {
+  echo "${ACCOUNTS}" | grep "$1" 2>/dev/null | sed 's/^.*://' || return 1
+}
+
+get_account_name() {
+  echo "${ACCOUNTS}" | grep "$1" 2>/dev/null | sed 's/:.*$//' || return 1
+}
+
+get_aws_profile() {
+  echo "${PROFILES}" | grep "$1" 2>/dev/null | sed 's/^.*://' || return 1
+}
+
+for ACCOUNT_NAME in devdigital wandigital wanews thewest perthnow thenightly sevennews; do
+  ACCOUNT_NUMBER="$(get_account_number "$ACCOUNT_NAME")"
+  ECR_REPO="${ACCOUNT_NUMBER}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+  AWS_PROFILE="$(get_aws_profile "$ACCOUNT_NAME")"
+
+  echo "logging in to ${ACCOUNT_NAME} (${ECR_REPO}) in ${AWS_REGION}..." >&2
+  if AWS_PROFILE="${AWS_PROFILE}" \
+    aws ecr get-login-password \
+        --region "$AWS_REGION" \
+      | docker login \
+        --username AWS \
+        --password-stdin \
+        "${ECR_REPO}"
+  then
+    echo >&2
+  else
+    echo "failed to log in to ${ACCOUNT_NAME} (${ECR_REPO}) in ${AWS_REGION}" >&2
+    echo >&2
+    exit 1
+  fi
+done
+
