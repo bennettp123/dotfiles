@@ -129,7 +129,6 @@ if [ "$(arch)" = "i386" ]; then
   PATH="/usr/local/bin:$PATH"
 fi
 
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="${HOME}/.bin:$PATH"
 
 # warn about missing dependencies
