@@ -27,13 +27,10 @@ history = 100000
 multiplier = 1
 
 [window]
-#decorations = "Buttonless"
 decorations = "Full"
 option_as_alt = "Both"
 dynamic_padding = true
-#opacity = 0.96
-#blur = true
-#startup_mode = "Fullscreen"
+startup_mode = "Fullscreen"
 
 [window.dimensions]
 columns = 120
