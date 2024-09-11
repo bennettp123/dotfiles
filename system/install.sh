@@ -14,4 +14,7 @@ chmod 644 "${SYSTEM_TARGET_DIR}/Library/LaunchDaemons/com.bennettp123.fix-chimpy
 chown root:wheel "${SYSTEM_TARGET_DIR}/usr/local/bin/apply-power-settings.sh"
 chmod 755 "${SYSTEM_TARGET_DIR}/usr/local/bin/apply-power-settings.sh"
 
-launchctl load "${SYSTEM_TARGET_DIR}/Library/LaunchDaemons/com.bennettp123.fix-chimpy-power-settings.plist"
+if [ -z "${SYSTEM_TARGET_DIR}" ] || [ "${SYSTEM_TARGET_DIR}" == "/" ]; then
+  launchctl bootstrap system "${SYSTEM_TARGET_DIR}/Library/LaunchDaemons/com.bennettp123.fix-chimpy-power-settings.plist"
+fi
+

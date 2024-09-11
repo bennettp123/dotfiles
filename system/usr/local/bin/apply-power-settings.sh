@@ -28,3 +28,7 @@ pmset -b womp 0
 # enable wake-on-magic-packet when on charger (-c)
 pmset -c womp 1
 
+# disable remote login (creepy!)
+systemsetup -f -setremotelogin off
+
+
