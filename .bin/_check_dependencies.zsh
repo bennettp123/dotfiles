@@ -28,7 +28,7 @@ unset SOME_WERE_MISSING
 function missing_dependency() {
   local HINT
   local MESSAGE
-  MESSAGE="missing command ${1}"
+  MESSAGE="missing ${3:-command} ${1}"
   HINT="${fg_bold[green]}hint${reset_color}: ${fg_bold[white]}${2}${reset_color}"
   if [ -n "${2}" ]; then
     MESSAGE="${MESSAGE} (${HINT})"
@@ -51,7 +51,11 @@ if ! command -v nodenv >/dev/null 2>&1; then
 fi
 
 if ! nodenv commands | grep -qs '^alias$' >/dev/null; then
-  missing_dependency 'nodenv alias' 'brew tap nodenv/nodenv && brew install nodenv-aliases'
+  missing_dependency 'nodenv alias' 'brew tap nodenv/nodenv && brew install nodenv-aliases' plugin
+fi
+
+if ! nodenv commands | grep -qs '^default-packages$' >/dev/null; then
+  missing_dependency 'nodenv default-packages' 'brew install nodenv/nodenv/nodenv-default-packages' plugin
 fi
 
 if [ -n "${SOME_WERE_MISSING}" ]; then
