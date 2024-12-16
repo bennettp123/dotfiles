@@ -20,16 +20,8 @@ if [ "${0}" == "$(command -v "${command}")" ]; then
 fi
 
 function _launch_docker_if_not_running() {
-    TIMEOUT=$(( $(date +%s) + 60))
     if docker version >/dev/null 2>&1; then return 0; fi
-    echo "Launching Docker.app" >&2
-    if ! open -a Docker; then return 1; fi
-    while [ $(date +%s) -lt ${TIMEOUT} ]; do
-        if docker version >/dev/null 2>&1; then return 0; fi
-        sleep 1
-    done
-    echo "Timeout waiting for Docker.app" >&2
-    return 1
+    if ! docker desktop start; then return 1; fi
 }
 
 function _wrapper() {
