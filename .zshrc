@@ -134,3 +134,16 @@ export PATH="${HOME}/.bin:$PATH"
 # warn about missing dependencies
 source ~/.bin/_check_dependencies.zsh
 
+
+__SSH_CMD="${__SSH_CMD:-$(command -v ssh)}"
+
+# use kitten wrapper for ssh in kitty terminal
+function ssh() {
+  if [ grep -qs kitty <<<"${TERM}" >/dev/null 2>&1 && command -v kitten >/dev/null 2>&1 ]; then
+    kitten ssh "${@}"
+  else
+    "${__SSH_CMD}" "${@}"
+  fi
+}
+
+
