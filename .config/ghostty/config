@@ -21,6 +21,28 @@ keybind = super+shift+plus=increase_font_size:1
 # subsequent windows will inherit the font size of the previous window.
 font-size = 18
 
+# Apply a font feature. This can be repeated multiple times to enable multiple
+# font features. You can NOT set multiple font features with a single value
+# (yet).
+#
+# The font feature will apply to all fonts rendered by Ghostty. A future
+# enhancement will allow targeting specific faces.
+#
+# A valid value is the name of a feature. Prefix the feature with a `-` to
+# explicitly disable it. Example: `ss20` or `-ss20`.
+#
+# To disable programming ligatures, use `-calt` since this is the typical
+# feature name for programming ligatures. To look into what font features
+# your font has and what they do, use a font inspection tool such as
+# [fontdrop.info](https://fontdrop.info).
+#
+# To generally disable most ligatures, use `-calt`, `-liga`, and `-dlig` (as
+# separate repetitive entries in your config).
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+
 # The style of the cursor. This sets the default style. A running program can
 # still request an explicit cursor style using escape sequences (such as `CSI
 # q`). Shell configurations will often request specific cursor styles.
