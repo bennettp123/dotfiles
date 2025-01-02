@@ -1,1 +1,17 @@
+# see https://ghostty.org/docs/config
+
+# increase the default font size
+# https://ghostty.org/docs/config/reference#font-size
 font-size = 18
+
+# use a block cursor instead of a straight line
+# https://ghostty.org/docs/config/reference#cursor-style
+cursor-style = block
+
+# launch fullscreen by default
+# https://ghostty.org/docs/config/reference#fullscreen
+fullscreen = true
+
+# keybind ⌘⇧+ to increase font size
+# https://ghostty.org/docs/config/reference#keybind
+# 
