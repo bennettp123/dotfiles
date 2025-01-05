@@ -1,5 +1,15 @@
 # vim:fileencoding=utf-8:foldmethod=marker:ft=toml
 
+#: Playing around with shaders {{{
+
+#custom-shader = /Users/bennett/.config/ghostty/shaders/inside-the-matrix.glsl
+#custom-shader = /Users/bennett/.config/ghostty/shaders/glow-rgbsplit-twitchy.glsl
+#custom-shader = /Users/bennett/.config/ghostty/shaders/crt-shader-with-chromatic-aberration-glow-scanlines-dot-matrix.glsl
+#custom-shader = /Users/bennett/.config/ghostty/shaders/smoke-and-ghost.glsl
+#custom-shader-animation = true
+
+#: }}}
+
 # My Ghostty config. You can get a list of available options by running the
 # following:
 #
