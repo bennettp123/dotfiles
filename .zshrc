@@ -112,7 +112,7 @@ fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 source "${HOME}/.aws-helpers.sh"
 
-path=($HOME/.docker/bin $path)
+#path=($HOME/.docker/bin $path)
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
