@@ -150,3 +150,8 @@ if ! command -v tailscale >/dev/null 2>&1; then
   alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 fi
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/bennett/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
