@@ -32,6 +32,9 @@ vim.g.maplocalleader = "\\"
 vim.opt.mouse = ''
 vim.opt.clipboard = ''
 
+-- copilot needs node 20+
+vim.g.copilot_node_command = "~/.nodenv/versions/22/bin/node"
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
