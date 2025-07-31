@@ -121,9 +121,6 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
-
 # use the right version of homebrew (rosetta vs arm)
 if [ "$(arch)" = "i386" ]; then
   PATH="/usr/local/bin:$PATH"
