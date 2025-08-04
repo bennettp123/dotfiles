@@ -177,3 +177,5 @@ unset __conda_setup
 export PATH="$PATH:/Users/bennett/.lmstudio/bin"
 # End of LM Studio CLI section
 
+container --generate-completion-script zsh
+
