@@ -81,6 +81,7 @@ zinit snippet OMZP::brew
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::colorize
 zinit ice as"completion"; zinit snippet OMZP::docker/completions/_docker
+zinit ice as"completion"; zinit snippet ~/.zsh-plugins/container/_container
 zinit snippet ~/.zsh-plugins/bennetts-dotfiles/bennetts-dotfiles.plugin.zsh
 
 # custom aliases
@@ -176,6 +177,4 @@ unset __conda_setup
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/bennett/.lmstudio/bin"
 # End of LM Studio CLI section
-
-eval "$(container --generate-completion-script zsh)"
 
