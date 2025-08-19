@@ -20,7 +20,9 @@ esac
 export EDITOR=vim
 export VISUAL=vim
 
-
+# increase the maximum number of open files
+if [ "$(ulimit -Hn)" != 'unlimited' ] && [ $(ulimit -Hn) -lt 16384 ]; then ulimit -Hn 16384; fi
+if [ "$(ulimit -Sn)" != 'unlimited' ] && [ $(ulimit -Sn) -lt  8192 ]; then ulimit -Sn  8192; fi
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/bennett/.lmstudio/bin"
