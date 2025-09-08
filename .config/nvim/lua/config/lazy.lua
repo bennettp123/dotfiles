@@ -27,14 +27,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- mac ⌘C/⌘V support is enabled by disabling mouse support, and using the
--- system clipboard :P
-vim.opt.mouse = ''
-vim.opt.clipboard = ''
-
--- copilot needs node 20+
-vim.g.copilot_node_command = "~/.nodenv/versions/22/bin/node"
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {

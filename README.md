@@ -12,6 +12,9 @@ highly opinionated&mdash;if you want to use it, you may need to fork it first ðŸ
 * `brew install terminal-notifier`
 * `brew install neovim` (optional)
 * `brew install fzf`
+* `brew install fd`
+* `brew install tree-sitter`
+* `brew install tree-sitter-cli`
 
 
 ## installing the dotfiles
