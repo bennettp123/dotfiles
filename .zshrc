@@ -178,3 +178,8 @@ unset __conda_setup
 export PATH="$PATH:/Users/bennett/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# set up ccache
+if [ -d /opt/homebrew/opt/ccache/libexec ]; then
+  path=(/opt/homebrew/opt/ccache/libexec $path)
+fi
+
