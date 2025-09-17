@@ -311,7 +311,7 @@ quit-after-last-window-closed = true
 #     separate framework and cannot be customized without significant
 #     effort.
 #
-macos-icon = custom-style
+#macos-icon = custom-style
 
 # The material to use for the frame of the macOS app icon.
 #
@@ -323,7 +323,7 @@ macos-icon = custom-style
 #  * `chrome` - A shiny chrome frame.
 #
 # This only has an effect when `macos-icon` is set to `custom-style`.
-macos-icon-frame = aluminum
+#macos-icon-frame = aluminum
 
 # The color of the ghost in the macOS app icon.
 #
@@ -334,7 +334,7 @@ macos-icon-frame = aluminum
 # `custom-style`.
 #
 # This only has an effect when `macos-icon` is set to `custom-style`.
-macos-icon-ghost-color = ffffff
+#macos-icon-ghost-color = ffffff
 
 # The color of the screen in the macOS app icon.
 #
@@ -347,5 +347,5 @@ macos-icon-ghost-color = ffffff
 # `custom-style`.
 #
 # This only has an effect when `macos-icon` is set to `custom-style`.
-macos-icon-screen-color = 000000
+#macos-icon-screen-color = 000000
 
