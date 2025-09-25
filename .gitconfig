@@ -22,8 +22,10 @@
 
 [url "ssh://git@bitbucket.stibodx.com:7999/ccidist/cocoapods-rc.git"]
   insteadOf = "https://jira.stibodx.com/stash/scm/ccidist/cocoapods-rc.git"
+
 [pull]
   ff = only
 
 [url "git@github.com:West-Australian-Newspapers/sibodx-cocoapods.git"]
-	insteadOf = https://github.com/West-Australian-Newspapers/sibodx-cocoapods.git
+  insteadOf = https://github.com/West-Australian-Newspapers/sibodx-cocoapods.git
+
