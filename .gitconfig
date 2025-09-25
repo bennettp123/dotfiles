@@ -24,7 +24,7 @@
   insteadOf = "https://jira.stibodx.com/stash/scm/ccidist/cocoapods-rc.git"
 
 [url "git@github.com:West-Australian-Newspapers/sibodx-cocoapods.git"]
-  insteadOf = "https://github.com/West-Australian-Newspapers/sibodx-cocoapods.git"
+	insteadOf = https://jira.stibodx.com/stash/scm/ccidist/cocoapods.git
 
 [pull]
   ff = only
