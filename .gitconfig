@@ -27,5 +27,5 @@
   ff = only
 
 [url "git@github.com:West-Australian-Newspapers/sibodx-cocoapods.git"]
-  insteadOf = https://github.com/West-Australian-Newspapers/sibodx-cocoapods.git
+  insteadOf = "https://github.com/West-Australian-Newspapers/stibodx-cocoapods.git"
 
