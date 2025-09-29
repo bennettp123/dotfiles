@@ -1,5 +1,5 @@
 # homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$("$(brew --prefix)/bin/brew" shellenv)"
 
 if ! echo "$PATH" | grep -q '/Users/bennett/.local/bin'; then
   PATH="/Users/bennett/.local/bin:${PATH}"

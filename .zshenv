@@ -1,4 +1,6 @@
-. "$HOME/.cargo/env"
+if [ -r "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # https://turbo.build/repo/docs/telemetry
 export TURBO_TELEMETRY_DISABLED=1

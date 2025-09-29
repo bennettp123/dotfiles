@@ -108,7 +108,7 @@ eval "$(nodenv init - zsh)"
 # other stuff below, possibly broken 🤷🏼😅
 
 
-fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 #source /opt/homebrew/share/zsh/site-functions/aws_zsh_completer.sh
 
 source "${HOME}/.aws-helpers.sh"
@@ -159,12 +159,12 @@ COMPOSE_BAKE=true
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("$(brew --prefix)/Caskroom/miniconda/base/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
         export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
@@ -179,7 +179,7 @@ export PATH="$PATH:/Users/bennett/.lmstudio/bin"
 # End of LM Studio CLI section
 
 # set up ccache
-if [ -d /opt/homebrew/opt/ccache/libexec ]; then
-  path=(/opt/homebrew/opt/ccache/libexec $path)
+if [ -d "$(brew --prefix)/opt/ccache/libexec" ]; then
+  path=("$(brew --prefix)/opt/ccache/libexec" $path)
 fi
 

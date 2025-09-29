@@ -1,6 +1,6 @@
 . "$HOME/.cargo/env"
 
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
 
 # set up nodenv
 _SHELL="`ps -p $$ -o 'comm='`"

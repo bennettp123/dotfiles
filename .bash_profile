@@ -12,7 +12,7 @@ export PATH="$PATH:/Users/bennett/.lmstudio/bin"
 # End of LM Studio CLI section
 
 # set up ccache
-if [ -d "/opt/homebrew/opt/ccache/libexec" ]; then
-  export PATH="/opt/homebrew/opt/ccache/libexec:$PATH"
+if [ -d "$(brew --prefix)/opt/ccache/libexec" ]; then
+  export PATH="$(brew --prefix)/opt/ccache/libexec:$PATH"
 fi
 
