@@ -2,6 +2,19 @@
   email = 1610227+bennettp123@users.noreply.github.com
   name = Bennett Perkins
 
+  # this will be different on each machine, so it should be a symlink
+  # to the desired signing key.
+  signingKey = ~/.ssh/git-signing-key.pub
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.gitallowedsigners
+
 [core]
   excludesfile = ~/.gitignore-global
 
