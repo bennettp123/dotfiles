@@ -132,6 +132,9 @@ export PATH="${HOME}/.bin:$PATH"
 # warn about missing dependencies
 source ~/.bin/_check_dependencies.zsh
 
+if [ -r "${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" ]; then
+  export SSH_AUTH_SOCK="${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+fi
 
 __SSH_CMD="${__SSH_CMD:-$(command -v ssh)}"
 
