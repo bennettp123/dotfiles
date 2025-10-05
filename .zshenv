@@ -19,4 +19,6 @@ export WATCHMAN_CONFIG_FILE="${HOME:-~}/.watchman.json"
 export LC_ALL=en_AU.UTF-8
 export LANG=en_AU.UTF-8
 
+# https://docs.brew.sh/Analytics
+export HOMEBREW_NO_ANALYTICS=1
 
