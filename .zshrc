@@ -83,6 +83,9 @@ zinit snippet OMZP::colorize
 zinit ice as"completion"; zinit snippet OMZP::docker/completions/_docker
 zinit ice as"completion"; zinit snippet ~/.zsh-plugins/container/_container
 zinit snippet ~/.zsh-plugins/bennetts-dotfiles/bennetts-dotfiles.plugin.zsh
+if [ -r ~/.zsh-plugins/bennetts-private-dotfiles/bennetts-private-dotfiles.plugin.zsh ]; then
+  zinit snippet ~/.zsh-plugins/bennetts-private-dotfiles/bennetts-private-dotfiles.plugin.zsh
+fi
 
 # custom aliases
 function _aws_azure_login() { ( nodenv shell 24 && if ! npm ll -g aws-azure-login >/dev/null 2>&1; then echo 'installing aws-azure-login...' && npm install -g aws-azure-login; fi && AWS_PROFILE=aad nodenv exec aws-azure-login "${@}" ) }
