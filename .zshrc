@@ -85,8 +85,7 @@ zinit ice as"completion"; zinit snippet ~/.zsh-plugins/container/_container
 zinit snippet ~/.zsh-plugins/bennetts-dotfiles/bennetts-dotfiles.plugin.zsh
 
 # custom aliases
-#alias aws-azure-login='AWS_PROFILE=aad nvm exec 20 -- aws-azure-login'
-function _aws_azure_login() { ( nodenv shell 20.15.0 && AWS_PROFILE=aad nodenv exec aws-azure-login "${@}" ) }
+function _aws_azure_login() { ( nodenv shell 24 && if ! npm ll -g aws-azure-login >/dev/null 2>&1; then echo 'installing aws-azure-login...' && npm install -g aws-azure-login; fi && AWS_PROFILE=aad nodenv exec aws-azure-login "${@}" ) }
 alias aws-azure-login='_aws_azure_login'
 #alias lighthouse='nvm exec 20 -- lighthouse'
 alias lighthouse='( nodenv shell 20.15.0 && nodenv exec exec lighthouse'
