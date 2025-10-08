@@ -197,6 +197,8 @@ fullscreen = true
 # Changing this value at runtime works after a small delay.
 auto-update = download
 
+auto-update-channel = tip
+
 # Horizontal window padding. This applies padding between the terminal cells
 # and the left and right window borders. The value is in points, meaning that
 # it will be scaled appropriately for screen DPI.
