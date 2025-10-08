@@ -351,3 +351,6 @@ quit-after-last-window-closed = true
 # This only has an effect when `macos-icon` is set to `custom-style`.
 #macos-icon-screen-color = 000000
 
+# Don't prompt before closing (unless the shell integration thinks
+# there's something still running)
+confirm-close-surface = false
