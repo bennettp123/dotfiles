@@ -138,16 +138,16 @@ if [ -r "${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/so
   export SSH_AUTH_SOCK="${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 fi
 
-__SSH_CMD="${__SSH_CMD:-$(command -v ssh)}"
+#__SSH_CMD="${__SSH_CMD:-$(command -v ssh)}"
 
 # use kitten wrapper for ssh in kitty terminal
-function ssh() {
-  if grep -qs kitty <<<"${TERM}" >/dev/null 2>&1 && command -v kitten >/dev/null 2>&1; then
-    kitten ssh "${@}"
-  else
-    "${__SSH_CMD}" "${@}"
-  fi
-}
+#function ssh() {
+#  if grep -qs kitty <<<"${TERM}" >/dev/null 2>&1 && command -v kitten >/dev/null 2>&1; then
+#    kitten ssh "${@}"
+#  else
+#    "${__SSH_CMD}" "${@}"
+#  fi
+#}
 
 if ! command -v tailscale >/dev/null 2>&1; then
   alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"

@@ -354,3 +354,7 @@ quit-after-last-window-closed = true
 # Don't prompt before closing (unless the shell integration thinks
 # there's something still running)
 confirm-close-surface = false
+
+# shell integration
+shell-integration = detect
+shell-integration-features = true
