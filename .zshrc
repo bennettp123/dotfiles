@@ -71,6 +71,12 @@ export PYENV_ROOT="$HOME/.pyenv"; command -v pyenv >/dev/null || export PATH="$P
 eval "$(rbenv init - zsh)"
 export PATH="$HOME/.jenv/bin:$PATH"; eval "$(jenv init -)"
 
+# override terminal-notifier because it's slow for some reason
+terminal-notifier () {
+  # Run it in the background. Breaks $? but thems the breaks.
+  ( "$(whence -p terminal-notifier)" "$@" & )
+}
+
 # add snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::aws
