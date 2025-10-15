@@ -9,9 +9,9 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/sh</string>
-        <string>/usr/local/bin/apply-power-settings.sh</string>
+	<string>/opt/bennettp123/bin/apply-power-settings.sh</string>
     </array>
     <key>StartInterval</key>
-    <integer>1800</integer>
+    <integer>900</integer>
 </dict>
 </plist>

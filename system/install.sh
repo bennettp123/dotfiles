@@ -11,10 +11,14 @@ if [ -z "${SYSTEM_TARGET_DIR}" ] || [ "${SYSTEM_TARGET_DIR}" == "/" ]; then
   xattr -d -r -v com.apple.provenance "${SYSTEM_SOURCE_DIR}"
 fi
 
-rm -fv "${SYSTEM_TARGET_DIR}/usr/local/bin/apply-power-settings.sh"
-cp -fv "${SYSTEM_SOURCE_DIR}/usr/local/bin/apply-power-settings.sh" "${SYSTEM_TARGET_DIR}/usr/local/bin/apply-power-settings.sh"
-chown root:wheel "${SYSTEM_TARGET_DIR}/usr/local/bin/apply-power-settings.sh"
-chmod 755 "${SYSTEM_TARGET_DIR}/usr/local/bin/apply-power-settings.sh"
+mkdir -p "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin"
+chown root:wheel "${SYSTEM_TARGET_DIR}/opt" "${SYSTEM_TARGET_DIR}/opt/bennettp123" "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin"
+chmod 755 "${SYSTEM_TARGET_DIR}/opt" "${SYSTEM_TARGET_DIR}/opt/bennettp123" "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin"
+
+rm -fv "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin/apply-power-settings.sh"
+cp -fv "${SYSTEM_SOURCE_DIR}/opt/bennettp123/bin/apply-power-settings.sh" "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin/apply-power-settings.sh"
+chown root:wheel "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin/apply-power-settings.sh"
+chmod 755 "${SYSTEM_TARGET_DIR}/opt/bennettp123/bin/apply-power-settings.sh"
 
 for file in Library/LaunchDaemons/*.plist Library/LaunchAgents/*.plist; do
 

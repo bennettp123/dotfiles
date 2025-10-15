@@ -11,7 +11,7 @@
 # This script probably requires sudo to run.
 
 # put the system to sleep after 15 minute(s) when on charger (-c)
-pmset -c sleep 15
+pmset -c sleep 10
 
 # put the system to sleep after 10 minute(s) when on battery (-b)
 pmset -b sleep 10
