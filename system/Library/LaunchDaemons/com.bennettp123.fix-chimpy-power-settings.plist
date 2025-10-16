@@ -8,7 +8,6 @@
     <true/>
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/sh</string>
 	<string>/opt/bennettp123/bin/apply-power-settings.sh</string>
     </array>
     <key>StartInterval</key>
