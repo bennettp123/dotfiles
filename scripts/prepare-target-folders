@@ -21,6 +21,7 @@ find . -type d \
     -not -path '.' \
     -not -path './.git*' \
     -not -path './scripts*' \
+    -not -path './system*' \
 | sed 's/^\.\///' \
 | xargs -I "%" mkdir -v -p "${TARGET_DIR}/%" \
 | xargs -I "%" echo "created %"
