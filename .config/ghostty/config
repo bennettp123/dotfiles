@@ -378,6 +378,8 @@ shell-integration-features = true
 #
 # This can be changed at runtime but will only affect new terminal surfaces.
 #
-# The default appears to be 5000
-scrollback-limit = 20000
+# The default is 10000000, or 10MB
+
+# 100MB
+scrollback-limit = 100000000
 
