@@ -67,9 +67,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color "$realpath"'
 # shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-export PYENV_ROOT="$HOME/.pyenv"; command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"; eval "$(pyenv init -)"
-eval "$(rbenv init - zsh)"
-export PATH="$HOME/.jenv/bin:$PATH"; eval "$(jenv init -)"
 
 # override terminal-notifier because it's slow for some reason
 terminal-notifier () {
@@ -110,13 +107,15 @@ if command -v nvim >/dev/null; then alias vim=nvim; fi
 #     --> add '@,:'
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>@,:'
 
-# initialize nodenv
+fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 eval "$(nodenv init - zsh)"
+if command -v pyenv >/dev/null 2>&1; then eval "$(pyenv init - zsh)"; fi
+eval "$(rbenv init - zsh)"
+export PATH="$HOME/.jenv/bin:$PATH"; eval "$(jenv init -)"
 
 # other stuff below, possibly broken 🤷🏼😅
 
 
-fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 #source /opt/homebrew/share/zsh/site-functions/aws_zsh_completer.sh
 
 source "${HOME}/.aws-helpers.sh"
