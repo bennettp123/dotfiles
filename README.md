@@ -7,7 +7,7 @@ highly opinionated&mdash;if you want to use it, you may need to fork it first ðŸ
 
 ## requirements
 
-* Nerd Fonts (such as [this one](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#meslo-nerd-font-patched-for-powerlevel10k))
+* `brew install font-meslo-lg-nerd-font`
 * `brew install chroma`
 * `brew install terminal-notifier`
 * `brew install neovim` (optional)

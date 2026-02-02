@@ -1,0 +1,14 @@
+{
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "zig.zls.enabled": "off",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDragAndDrop": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "debug.onTaskErrors": "abort",
+  "git.openRepositoryInParentFolders": "never",
+  "explorer.confirmDelete": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.fontFamily": "'MesloLGS Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'MesloLGS Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+}
