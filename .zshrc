@@ -193,3 +193,7 @@ if [ -d "$(brew --prefix)/opt/ccache/libexec" ]; then
   path=("$(brew --prefix)/opt/ccache/libexec" $path)
 fi
 
+if command -v eza >/dev/null 2>&1 && [[ -o interactive ]]; then
+  alias ls='eza --hyperlink --group --icons=auto'
+fi
+
