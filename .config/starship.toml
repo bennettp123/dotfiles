@@ -65,15 +65,16 @@ format = '[ $user]($style)'
 [directory]
 style = "bg:peach fg:crust"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 16
 truncation_symbol = "…/"
+truncate_to_repo = false
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+#"Documents" = "󰈙 "
+#"Downloads" = " "
+#"Music" = "󰝚 "
+#"Pictures" = " "
+#"Developer" = "󰲋 "
 
 [git_branch]
 symbol = ""
