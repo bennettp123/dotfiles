@@ -11,4 +11,7 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontFamily": "'MesloLGS Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontFamily": "'MesloLGS Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "files.associations": {
+    "*.hujson": "jsonc",
+  },
 }
