@@ -15,4 +15,6 @@
     "*.hujson": "jsonc",
   },
   "[github-actions-workflow]": {},
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredLightColorTheme": "Visual Studio Dark",
 }
