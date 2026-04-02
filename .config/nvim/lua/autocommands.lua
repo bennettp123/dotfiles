@@ -1,1 +1,0 @@
--- custom [autocommands](https://neovim.io/doc/user/autocmd.html#_1.-introduction) here
