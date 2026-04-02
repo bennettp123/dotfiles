@@ -39,3 +39,9 @@ aws-list-rds-instances() {
 		| sort
 }
 
+aws-login-ecr() {
+	AWS_PROFILE=wandigital \
+		aws ecr get-login-password \
+		| docker login -u AWS https://949304525094.dkr.ecr.ap-southeast-2.amazonaws.com --password-stdin
+}
+
