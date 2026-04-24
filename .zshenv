@@ -22,3 +22,6 @@ export LANG=en_AU.UTF-8
 # https://docs.brew.sh/Analytics
 export HOMEBREW_NO_ANALYTICS=1
 
+# default AWS profile: authenticates using `aws-azure-login`
+export AWS_PROFILE=aad
+
