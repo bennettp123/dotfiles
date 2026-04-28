@@ -128,6 +128,7 @@ export PATH="${HOME}/.bin:$PATH"
 # warn about missing dependencies
 source ~/.bin/_check_dependencies.zsh
 
+# moved to a wrapper script; see ../.bin/git-gpg-ssh-wrapper.sh
 #if [ -r "${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" ]; then
 #  export SSH_AUTH_SOCK="${HOME}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 #fi
