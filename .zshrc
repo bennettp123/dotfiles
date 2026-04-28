@@ -86,6 +86,7 @@ alias aws-azure-login='_aws_azure_login'
 alias lighthouse='( nodenv shell 20.15.0 && nodenv exec exec lighthouse'
 alias lhci='( nodenv shell 20.15.0 && nodenv exec nvm exec lhci )'
 if command -v nvim >/dev/null; then alias vim=nvim; fi
+alias aws-ecr-login=aws-login-ecr
 
 # custom stuff
 
