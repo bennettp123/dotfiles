@@ -14,7 +14,7 @@
 
 [gpg "ssh"]
   allowedSignersFile = ~/.gitallowedsigners
-  program = ../.bin/git-gpg-ssh-wrapper.sh
+  program = git-gpg-ssh-wrapper.sh
 
 [core]
   excludesfile = ~/.gitignore-global
