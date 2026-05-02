@@ -95,7 +95,7 @@ keybind = "super+shift+plus=increase_font_size:1"
 # depending on your `window-inherit-font-size` setting. If that setting is
 # true, only the first window will be affected by this change since all
 # subsequent windows will inherit the font size of the previous window.
-font-size = 18
+font-size = 16
 
 # All of the configurations behavior adjust various metrics determined by the
 # font. The values can be integers (1, -1, etc.) or a percentage (20%, -15%,
