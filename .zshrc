@@ -185,7 +185,9 @@ if command -v eza >/dev/null 2>&1 && [[ -o interactive ]]; then
   alias ls='eza --hyperlink --group --icons=auto'
 fi
 
+# if nothing else is available, use mysql from mysql-client
+path=($path "$(brew --prefix)/opt/mysql-client/bin" )
+
 # prefer some homebrew-provided utils
 path=("$(brew --prefix)/opt/curl/bin" $path)
 path=("$(brew --prefix)/opt/bind/bin" $path)
-
