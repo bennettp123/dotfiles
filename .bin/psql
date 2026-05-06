@@ -6,38 +6,36 @@
 command="$(basename "${0}")"
 
 if [ "${0}" == "$(command -v "${command}")" ]; then
-    path_to_remove="$(dirname "${0}")"
-    PATH="${PATH[@]/$path_to_remove}"
-    if [ -z "$(echo "${PATH}" | sed 's/://g' 2>/dev/null)" ]; then
-        echo "could not find ${command}; not in path?" >&2
-	exit 1
-    fi
+  path_to_remove="$(dirname "${0}")"
+  PATH="${PATH[@]/$path_to_remove/}"
+  if [ -z "$(echo "${PATH}" | sed 's/://g' 2>/dev/null)" ]; then
+    echo "could not find ${command}; not in path?" >&2
+    exit 1
+  fi
 
-    if [ "${0}" == "$(command -v "${command}")" ]; then
-      echo "could not remove myself from PATH; refusing to proceed" >&2
-      exit 1
-    fi
+  if [ "${0}" == "$(command -v "${command}")" ]; then
+    echo "could not remove myself from PATH; refusing to proceed" >&2
+    exit 1
+  fi
 fi
 
 function _launch_postgres_if_not_running() {
-    TIMEOUT=$(( $(date +%s) + 60))
+  TIMEOUT=$(($(date +%s) + 3))
+  if psql -c 'SELECT 1;' >/dev/null 2>&1; then return 0; fi
+  echo "Launching Postgres.app" >&2
+  if ! open -g -a Postgres; then return 1; fi
+  while [ $(date +%s) -lt ${TIMEOUT} ]; do
     if psql -c 'SELECT 1;' >/dev/null 2>&1; then return 0; fi
-    echo "Launching Postgres.app" >&2
-    if ! open -g -a Postgres; then return 1; fi
-    while [ $(date +%s) -lt ${TIMEOUT} ]; do
-        if psql -c 'SELECT 1;' >/dev/null 2>&1; then return 0; fi
-        sleep 1
-    done
-    echo "Timeout waiting for Postgres.app" >&2
-    return 1
+    sleep 1
+  done
+  echo "timeout waiting for Postgres.app, proceeding anyway" >&2
 }
 
 function _wrapper() {
-    if [ "$(sw_vers -productName 2>/dev/null)" == 'macOS' ]; then
-        _launch_postgres_if_not_running
-    fi
-    "${command}" "${@}"
+  if [ "$(sw_vers -productName 2>/dev/null)" == 'macOS' ]; then
+    _launch_postgres_if_not_running
+  fi
+  "${command}" "${@}"
 }
 
 _wrapper "${@}"
-
