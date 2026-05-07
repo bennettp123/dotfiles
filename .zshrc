@@ -3,6 +3,9 @@
 # To customize prompt, run `starship configure or edit ~/.config/starship.toml
 eval "$(starship init zsh)"
 
+# override some zinit/oh-my-zsh stuff
+SHOW_AWS_PROMPT=false # disable OMZP::aws prompt (handled by starship)
+
 # set the directory in which to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
