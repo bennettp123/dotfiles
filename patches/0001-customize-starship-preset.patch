@@ -1,0 +1,82 @@
+From 995c1ab98c4e084014a8189487bc41db6b433db6 Mon Sep 17 00:00:00 2001
+From: Bennett Perkins <1610227+bennettp123@users.noreply.github.com>
+Date: Thu, 7 May 2026 09:32:45 +0800
+Subject: [PATCH] customize starship preset
+
+---
+ .config/starship.toml | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/.config/starship.toml b/.config/starship.toml
+index c8d9959..9739722 100644
+--- a/.config/starship.toml
++++ b/.config/starship.toml
+@@ -22,7 +22,9 @@ $haskell\
+ $python\
+ [](fg:green bg:sapphire)\
+ $conda\
+-[](fg:sapphire bg:lavender)\
++[](fg:sapphire bg:yellow)\
++$aws\
++[](fg:yellow bg:lavender)\
+ $time\
+ [ ](fg:lavender)\
+ $cmd_duration\
+@@ -31,6 +33,18 @@ $character"""
+ 
+ palette = 'catppuccin_mocha'
+ 
++command_timeout = 900
++
++[aws]
++disabled = false
++format = '[ $symbol($profile) (\($region\) )]($style)'
++symbol = '☁️ '
++force_display = false
++style = "bg:yellow fg:crust"
++
++[aws.region_aliases]
++ap-southeast-2 = ''
++
+ [os]
+ disabled = false
+ style = "bg:red fg:crust"
+@@ -66,8 +80,9 @@ format = '[ $user]($style)'
+ [directory]
+ style = "bg:peach fg:crust"
+ format = "[ $path ]($style)"
+-truncation_length = 3
++truncation_length = 16
+ truncation_symbol = "…/"
++truncate_to_repo = false
+ 
+ [directory.substitutions]
+ "Documents" = "󰈙 "
+@@ -89,6 +104,7 @@ format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+ symbol = ""
+ style = "bg:green"
+ format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
++version_format = 'node${major}'
+ 
+ [bun]
+ symbol = ""
+@@ -114,6 +130,7 @@ format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+ symbol = ""
+ style = "bg:green"
+ format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
++version_format = 'php${major}.${minor}'
+ 
+ [java]
+ symbol = " "
+@@ -153,7 +170,7 @@ style = "bg:lavender"
+ format = '[[  $time ](fg:crust bg:lavender)]($style)'
+ 
+ [line_break]
+-disabled = true
++disabled = false
+ 
+ [character]
+ disabled = false
+-- 
+2.50.1 (Apple Git-155)
+
