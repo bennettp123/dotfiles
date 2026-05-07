@@ -14,6 +14,7 @@ $c\
 $rust\
 $golang\
 $nodejs\
+$bun\
 $php\
 $java\
 $kotlin\
@@ -21,7 +22,9 @@ $haskell\
 $python\
 [](fg:green bg:sapphire)\
 $conda\
-[](fg:sapphire bg:lavender)\
+[](fg:sapphire bg:yellow)\
+$aws\
+[](fg:yellow bg:lavender)\
 $time\
 [ ](fg:lavender)\
 $cmd_duration\
@@ -29,6 +32,18 @@ $line_break\
 $character"""
 
 palette = 'catppuccin_mocha'
+
+command_timeout = 900
+
+[aws]
+disabled = false
+format = '[ $symbol($profile) (\($region\) )]($style)'
+symbol = '☁️ '
+force_display = false
+style = "bg:yellow fg:crust"
+
+[aws.region_aliases]
+ap-southeast-2 = ''
 
 [os]
 disabled = false
@@ -70,11 +85,11 @@ truncation_symbol = "…/"
 truncate_to_repo = false
 
 [directory.substitutions]
-#"Documents" = "󰈙 "
-#"Downloads" = " "
-#"Music" = "󰝚 "
-#"Pictures" = " "
-#"Developer" = "󰲋 "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
 
 [git_branch]
 symbol = ""
@@ -87,6 +102,12 @@ format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
 
 [nodejs]
 symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+version_format = 'node${major}'
+
+[bun]
+symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
 
@@ -109,6 +130,7 @@ format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
 symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+version_format = 'php${major}.${minor}'
 
 [java]
 symbol = " "
