@@ -27,6 +27,8 @@ $aws\
 [](fg:yellow bg:lavender)\
 $time\
 [ ](fg:lavender)\
+$jobs\
+$battery\
 $cmd_duration\
 $line_break\
 $character"""
@@ -34,6 +36,14 @@ $character"""
 palette = 'catppuccin_mocha'
 
 command_timeout = 900
+
+[battery]
+disabled = false
+unknown_symbol = '󰂎 '
+
+[[battery.display]]
+threshold = 20
+style = 'bold red'
 
 [aws]
 disabled = false
