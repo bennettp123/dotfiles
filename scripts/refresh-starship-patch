@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if test -r "${BENNETTS_DOTFILES_CONFIG:-"${HOME}/.bennetts-dotfiles.config"}"; then
+  source "${BENNETTS_DOTFILES_CONFIG:-"${HOME}/.bennetts-dotfiles.config"}"
+fi
+
+DOTFILES_SOURCE="${DOTFILES_SOURCE:-"${HOME}/.dotfiles"}"
+DOTFILES_TARGET="${DOTFILES_TARGET:-"${HOME}"}"
+
+TMPFILE="$(mktemp)"
+trap "rm -f '${TMFILE}'" EXIT
+trap "rm -f '${TMFILE}'" INT
+
+SOURCE="./.config/starship.toml"
+PATCH="./patches/starship-customizations.patch"
+
+cd "${DOTFILES_SOURCE}" || exit 255
+
+if ! [ -r "${SOURCE}" ]; then
+  echo "file not found: ${SOUERCE}" >&2
+  exit 1
+fi
+
+starship preset catppuccin-powerline -o "${TMPFILE}"
+diff -u "${TMPFILE}" "${SOURCE}" >"${PATCH}"
+RESULT=$?
+
+if [ ${RESULT} -eq 0 ]; then
+  echo "no change" >&2
+  exit 0
+fi
+
+if [ ${RESULT} -gt 1 ]; then
+  echo "an error occurred" >&2
+  exit "${RESULT}"
+fi
+
+echo "Starship customizations have been written to ${PATCH}" >&2
+exit 0

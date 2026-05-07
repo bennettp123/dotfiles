@@ -59,7 +59,7 @@ sudo ./install.sh
 Currently done using [starship](https://starship.rs), using a modified version
 of the [Catppuccin Powerline](https://starship.rs/presets/catppuccin-powerline)
 preset&mdash;changes can be found in
-[`patches/0001-customize-starship-preset.patch`][1].
+[`patches/starship-customizations.patch`][1].
 
 Upstream changes can be applied by resetting the config and re-applying the
 customizations:
@@ -69,7 +69,11 @@ customizations:
 starship preset catppuccin-powerline -o ~/.config/starship.toml
 
 # re-apply the changes from the patch
-git apply patches/0001-customize-starship-preset.patch
+git apply patches/starship-customizations.patch
 ```
 
-[1]: ./patches/0001-customize-starship-preset.patch
+The starship-customizations.patch can be regenerated using
+[`./scripts/refresh-starship-patch`][2].
+
+[1]: ./patches/starship-customizations.patch
+[2]: ./scripts/refresh-starship-patch

@@ -1,17 +1,6 @@
-From 995c1ab98c4e084014a8189487bc41db6b433db6 Mon Sep 17 00:00:00 2001
-From: Bennett Perkins <1610227+bennettp123@users.noreply.github.com>
-Date: Thu, 7 May 2026 09:32:45 +0800
-Subject: [PATCH] customize starship preset
-
----
- .config/starship.toml | 23 ++++++++++++++++++++---
- 1 file changed, 20 insertions(+), 3 deletions(-)
-
-diff --git a/.config/starship.toml b/.config/starship.toml
-index c8d9959..9739722 100644
---- a/.config/starship.toml
-+++ b/.config/starship.toml
-@@ -22,7 +22,9 @@ $haskell\
+--- /var/folders/v2/db7y7prn7rz299rl3188lh6c0000gn/T/tmp.oLN0IlCiZS	2026-05-07 14:16:16
++++ ./.config/starship.toml	2026-05-07 14:12:49
+@@ -22,15 +22,39 @@
  $python\
  [](fg:green bg:sapphire)\
  $conda\
@@ -21,12 +10,23 @@ index c8d9959..9739722 100644
 +[](fg:yellow bg:lavender)\
  $time\
  [ ](fg:lavender)\
++$jobs\
++$battery\
  $cmd_duration\
-@@ -31,6 +33,18 @@ $character"""
+ $line_break\
+ $character"""
  
  palette = 'catppuccin_mocha'
  
 +command_timeout = 900
++
++[battery]
++disabled = false
++unknown_symbol = '󰂎 '
++
++[[battery.display]]
++threshold = 20
++style = 'bold red'
 +
 +[aws]
 +disabled = false
@@ -41,7 +41,7 @@ index c8d9959..9739722 100644
  [os]
  disabled = false
  style = "bg:red fg:crust"
-@@ -66,8 +80,9 @@ format = '[ $user]($style)'
+@@ -66,8 +90,9 @@
  [directory]
  style = "bg:peach fg:crust"
  format = "[ $path ]($style)"
@@ -52,7 +52,7 @@ index c8d9959..9739722 100644
  
  [directory.substitutions]
  "Documents" = "󰈙 "
-@@ -89,6 +104,7 @@ format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+@@ -89,6 +114,7 @@
  symbol = ""
  style = "bg:green"
  format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
@@ -60,7 +60,7 @@ index c8d9959..9739722 100644
  
  [bun]
  symbol = ""
-@@ -114,6 +130,7 @@ format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+@@ -114,6 +140,7 @@
  symbol = ""
  style = "bg:green"
  format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
@@ -68,7 +68,7 @@ index c8d9959..9739722 100644
  
  [java]
  symbol = " "
-@@ -153,7 +170,7 @@ style = "bg:lavender"
+@@ -153,7 +180,7 @@
  format = '[[  $time ](fg:crust bg:lavender)]($style)'
  
  [line_break]
@@ -77,6 +77,3 @@ index c8d9959..9739722 100644
  
  [character]
  disabled = false
--- 
-2.50.1 (Apple Git-155)
-
