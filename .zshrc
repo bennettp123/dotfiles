@@ -194,3 +194,10 @@ path=($path "$(brew --prefix)/opt/mysql-client/bin" )
 # prefer some homebrew-provided utils
 path=("$(brew --prefix)/opt/curl/bin" $path)
 path=("$(brew --prefix)/opt/bind/bin" $path)
+
+# wake-on-lan
+alias wake='wakeonlan'
+alias wake-miniserver='wakeonlan -i 192.168.178.80 d8:bb:c1:a0:93:db'
+alias wake-cachyos='wakeonlan -i 192.168.178.125 18:c0:4d:04:4d:bb'
+alias wake-cachy='wake-cachyos'
+
