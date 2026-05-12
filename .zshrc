@@ -195,9 +195,13 @@ path=($path "$(brew --prefix)/opt/mysql-client/bin" )
 path=("$(brew --prefix)/opt/curl/bin" $path)
 path=("$(brew --prefix)/opt/bind/bin" $path)
 
+# use cocoapods from bundler, if available
+alias pod='function __podwrapper_2c8b9fc4() { bundle exec -- bash -c "command -v pod" >/dev/null 2>&1 && bundle exec -- pod "${@}" || pod "${@}" }; __podwrapper_2c8b9fc4'
+
 # wake-on-lan
 alias wake='wakeonlan'
 alias wake-miniserver='wakeonlan -i 192.168.178.80 d8:bb:c1:a0:93:db'
 alias wake-cachyos='wakeonlan -i 192.168.178.125 18:c0:4d:04:4d:bb'
 alias wake-cachy='wake-cachyos'
+
 
