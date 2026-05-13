@@ -200,8 +200,10 @@ alias pod='function __podwrapper_2c8b9fc4() { bundle exec -- bash -c "command -v
 
 # wake-on-lan
 alias wake='wakeonlan'
-alias wake-miniserver='wakeonlan -i 192.168.178.80 d8:bb:c1:a0:93:db'
-alias wake-cachyos='wakeonlan -i 192.168.178.125 18:c0:4d:04:4d:bb'
+#alias wake-miniserver='wakeonlan -i 192.168.178.80 d8:bb:c1:a0:93:db'
+#alias wake-cachyos='wakeonlan -i 192.168.178.103 0c:ef:15:5f:08:18 && wakeonlan -i 192.168.178.125 18:c0:4d:04:4d:bb'
+alias wake-miniserver='wakeonlan d8:bb:c1:a0:93:db'
+alias wake-cachyos='wakeonlan 0c:ef:15:5f:08:18 && wakeonlan 18:c0:4d:04:4d:bb'
 alias wake-cachy='wake-cachyos'
 
 
