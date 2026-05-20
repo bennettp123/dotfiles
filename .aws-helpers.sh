@@ -37,10 +37,22 @@ aws-list-rds-instances() {
     sort
 }
 
+alias aws-login-ecr-wandigital='aws-login-ecr wandigital'
+
 aws-login-ecr() {
-  AWS_PROFILE=wandigital \
-    aws ecr get-login-password |
-    docker login -u AWS https://949304525094.dkr.ecr.ap-southeast-2.amazonaws.com --password-stdin
+  (
+    set -e -o pipefail
+    if [ ${#@} -le 0 ]; then
+      aws-login-ecr wandigital devdigital wanews thewest perthnow p19
+      exit $?
+    fi
+    for AWS_PROFILE in "${@}"; do
+      ACCOUNT_NUM="$(aws sts get-caller-identity --output json | jq -rc .Account)"
+      REPO="https://${ACCOUNT_NUM}.dkr.ecr.ap-southeast-2.amazonaws.com"
+      printf "${AWS_PROFILE}: "
+      aws ecr get-login-password --profile "${AWS_PROFILE}" | docker login -u AWS "${REPO}" --password-stdin
+    done
+  )
 }
 
 ssw-ecs-shell() {
