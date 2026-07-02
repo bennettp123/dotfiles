@@ -67,10 +67,11 @@ ssw-ecs-shell() {
     set -eo pipefail
     if [ "${ENV}" = 'dev' ]; then
       CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | grep -v upgrade | head -n1)"
+      SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | grep -v upgrade | head -n1)"
     else
       CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
+      SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
     fi
-    SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
     TASK="$(AWS_PROFILE=wandigital aws ecs list-tasks --cluster "${CLUSTER}" --service "${SERVICE}" | jq -cr '.taskArns[]' | head -n1)"
     echo "cluster: ${CLUSTER}" >&2
     echo "service: ${SERVICE}" >&2
