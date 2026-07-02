@@ -65,7 +65,11 @@ ssw-ecs-shell() {
     echo "warning: unrecognized env ${ENV} (expected 'dev' or 'prd')" >&2
   (
     set -eo pipefail
-    CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | grep -v upgrade | head -n1)"
+    if [ "${ENV}" = 'dev' ]; then
+      CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | grep -v upgrade | head -n1)"
+    else
+      CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
+    fi
     SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
     TASK="$(AWS_PROFILE=wandigital aws ecs list-tasks --cluster "${CLUSTER}" --service "${SERVICE}" | jq -cr '.taskArns[]' | head -n1)"
     echo "cluster: ${CLUSTER}" >&2
