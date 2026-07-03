@@ -219,3 +219,9 @@ alias wake-cachyos='wakeonlan 0c:ef:15:5f:08:18 && wakeonlan 18:c0:4d:04:4d:bb'
 alias wake-cachy='wake-cachyos'
 
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=("${HOME}/.docker/completions" $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
