@@ -1,8 +1,8 @@
 # homebrew
 eval "$("$(brew --prefix)/bin/brew" shellenv)"
 
-if ! echo "$PATH" | grep -q '/Users/bennett/.local/bin'; then
-  PATH="/Users/bennett/.local/bin:${PATH}"
+if ! echo "$PATH" | grep -q '${HOME}/.local/bin'; then
+  PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 # initialize nodenv

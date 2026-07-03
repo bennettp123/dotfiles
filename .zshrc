@@ -164,7 +164,7 @@ if ! command -v tailscale >/dev/null 2>&1; then
 fi
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/bennett/.docker/completions $fpath)
+fpath=("${HOME}/.docker/completions" $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
@@ -190,7 +190,7 @@ unset __conda_setup
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/bennett/.lmstudio/bin"
+export PATH="$PATH:${HOME}/.lmstudio/bin"
 # End of LM Studio CLI section
 
 # set up ccache
