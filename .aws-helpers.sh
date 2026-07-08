@@ -73,6 +73,7 @@ ssw-ecs-shell() {
       SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
     fi
     TASK="$(AWS_PROFILE=wandigital aws ecs list-tasks --cluster "${CLUSTER}" --service "${SERVICE}" | jq -cr '.taskArns[]' | head -n1)"
+    COMMAND="${3:-bash}"
     echo "cluster: ${CLUSTER}" >&2
     echo "service: ${SERVICE}" >&2
     echo "task: ${TASK}" >&2
@@ -81,7 +82,7 @@ ssw-ecs-shell() {
     echo "    AWS_PROFILE=wandigital aws ecs execute-command --interactive \\" >&2
     echo "        --cluster \"${CLUSTER}\" \\" >&2
     echo "        --task \"${TASK}\" \\" >&2
-    echo "        --container '${CONTAINER}' --command bash" >&2
+    echo "        --container '${CONTAINER}' --command \"${COMMAND}\"" >&2
     echo >&2
     echo >&2
     if [ "${CONTAINER}" = 'php-fpm' ]; then
@@ -93,6 +94,6 @@ ssw-ecs-shell() {
       echo >&2
       echo >&2
     fi
-    AWS_PROFILE=wandigital aws ecs execute-command --interactive --cluster "${CLUSTER}" --task "${TASK}" --container "${CONTAINER}" --command bash
+    AWS_PROFILE=wandigital aws ecs execute-command --interactive --cluster "${CLUSTER}" --task "${TASK}" --container "${CONTAINER}" --command "${COMMAND}"
   )
 }
