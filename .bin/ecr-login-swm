@@ -25,31 +25,60 @@ wanews:wanews
 AWS_REGION="${AWS_REGION:-ap-southeast-2}"
 
 get_account_number() {
-  echo "${ACCOUNTS}" | grep "$1" 2>/dev/null | sed 's/^.*://' || return 1
+  echo "${ACCOUNTS}" | grep "^${1//:/}:" 2>/dev/null | sed 's/^.*://' || return 1
 }
 
 get_account_name() {
-  echo "${ACCOUNTS}" | grep "$1" 2>/dev/null | sed 's/:.*$//' || return 1
+  echo "${ACCOUNTS}" | grep "^${1//:/}:" 2>/dev/null | sed 's/:.*$//' || return 1
 }
 
 get_aws_profile() {
-  echo "${PROFILES}" | grep "$1" 2>/dev/null | sed 's/^.*://' || return 1
+  echo "${PROFILES}" | grep "^${1//:/}:" 2>/dev/null | sed 's/^.*://' || return 1
 }
 
-for ACCOUNT_NAME in devdigital wandigital wanews thewest perthnow thenightly sevennews; do
-  ACCOUNT_NUMBER="$(get_account_number "$ACCOUNT_NAME")"
+DESIRED_ACCOUNTS=()
+for ACCOUNT in "${@}"; do
+  DESIRED_ACCOUNTS+=("${ACCOUNT}")
+done
+
+if [ "${#DESIRED_ACCOUNTS[@]}" -eq 0 ]; then
+  for ACCOUNT in $(echo "${ACCOUNTS}" | sed 's/:.*//g' | xargs); do
+    DESIRED_ACCOUNTS+=("${ACCOUNT}")
+  done
+fi
+
+UNRECOGNIZED_ACCOUNTS=()
+for ACCOUNT_NAME in ${DESIRED_ACCOUNTS[@]}; do
+  if [ -z "$(get_account_number "${ACCOUNT_NAME}")" ]; then
+    UNRECOGNIZED_ACCOUNTS+=("${ACCOUNT_NAME}")
+  fi
+done
+
+if [ "${#UNRECOGNIZED_ACCOUNTS[@]}" -gt 0 ]; then
+  echo >&2
+  echo "Unrecognized account(s):" >&2
+  for ACCOUNT in "${UNRECOGNIZED_ACCOUNTS[@]}"; do
+    echo " - ${ACCOUNT} " >&2
+  done
+  echo >&2
+  echo "Usage: $(basename "${0}") [$(echo "${ACCOUNTS}" | sed 's/:.*//g' | xargs | tr ' ' '|')...]" >&2
+  echo >&2
+  exit 1
+fi
+
+for ACCOUNT_NAME in "${DESIRED_ACCOUNTS[@]}"; do
+  ACCOUNT_NUMBER="$(get_account_number "${ACCOUNT_NAME}")"
   ECR_REPO="${ACCOUNT_NUMBER}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-  AWS_PROFILE="$(get_aws_profile "$ACCOUNT_NAME")"
+  AWS_PROFILE="$(get_aws_profile "${ACCOUNT_NAME}")"
 
   echo "logging in to ${ACCOUNT_NAME} (${ECR_REPO}) in ${AWS_REGION}..." >&2
   if AWS_PROFILE="${AWS_PROFILE}" \
     aws ecr get-login-password \
-        --region "$AWS_REGION" \
-      | docker login \
-        --username AWS \
-        --password-stdin \
-        "${ECR_REPO}"
-  then
+    --region "$AWS_REGION" |
+    docker login \
+      --username AWS \
+      --password-stdin \
+      "${ECR_REPO}"; then
     echo >&2
   else
     echo "failed to log in to ${ACCOUNT_NAME} (${ECR_REPO}) in ${AWS_REGION}" >&2
@@ -57,4 +86,3 @@ for ACCOUNT_NAME in devdigital wandigital wanews thewest perthnow thenightly sev
     exit 1
   fi
 done
-
