@@ -57,21 +57,19 @@ aws-login-ecr() {
 
 ssw-ecs-shell() {
   CONTAINER="${1:-php-fpm}"
-  [ "${CONTAINER}" = 'php-fpm' ] || [ "${CONTAINER}" = 'nginx' ] ||
+  [ "${CONTAINER}" = 'php-fpm' ] || [ "${CONTAINER}" = 'nginx' ] || [ "${CONTAINER}" = 'frankenphp' ] ||
     echo "warning: unrecognized container '${CONTAINER}' (expected one of 'php-fpm' or 'nginx')" >&2
 
   ENV="${2:-dev}"
-  [ "${ENV}" = 'dev' ] || [ "${ENV}" = 'prd' ] ||
+  [ "${ENV}" = 'dev' ] || [ "${ENV}" = 'prd' ] || [ "${ENV}" = 'prod' ] ||
     echo "warning: unrecognized env ${ENV} (expected 'dev' or 'prd')" >&2
   (
     set -eo pipefail
-    if [ "${ENV}" = 'dev' ]; then
-      CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | grep -v upgrade | head -n1)"
-      SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | grep -v upgrade | head -n1)"
-    else
-      CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
-      SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
+    if [ "${ENV}" = 'prod' ]; then
+      ENV=prd
     fi
+    CLUSTER="$(AWS_PROFILE=wandigital aws ecs list-clusters | jq -cr '.clusterArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
+    SERVICE="$(AWS_PROFILE=wandigital aws ecs list-services --cluster "${CLUSTER}" | jq -cr '.serviceArns[]' | grep ssw-shared-"${ENV}" | head -n1)"
     TASK="$(AWS_PROFILE=wandigital aws ecs list-tasks --cluster "${CLUSTER}" --service "${SERVICE}" | jq -cr '.taskArns[]' | head -n1)"
     COMMAND="${3:-bash}"
     echo "cluster: ${CLUSTER}" >&2
@@ -91,6 +89,18 @@ ssw-ecs-shell() {
       echo '    mysql --user="${DB_USER}" --password="${DB_PASSWORD}" --host="${DB_HOST}" --port="${DB_PORT}" "${DB_NAME}"' >&2
       echo '  _wan:' >&2
       echo '    mysql --user="${DB_USER}" --password="${DB_PASSWORD}" --host="${DB_HOST}" --port="${DB_PORT}" "${DB_NAME_TWO}"' >&2
+      echo >&2
+      echo >&2
+    fi
+    if [ "${CONTAINER}" = 'frankenphp' ]; then
+      echo 'HINT: connect to the database using one of the following commands:' >&2
+      echo '  _dbla:' >&2
+      echo '    mysql --user="${DB_USER}" --skip-ssl-verify-server-cert --password="${DB_PASSWORD}" --host="${DB_HOST}" --port="${DB_PORT}" "${DB_NAME}"' >&2
+      echo '  _wan:' >&2
+      echo '    mysql --user="${DB_USER}" --skip-ssl-verify-server-cert --password="${DB_PASSWORD}" --host="${DB_HOST}" --port="${DB_PORT}" "${DB_NAME_TWO}"' >&2
+      echo >&2
+      echo 'Hint: install debugging tools:' >&2
+      echo '  apt-get update && apt-get install -y default-mysql-client less procps vim' >&2
       echo >&2
       echo >&2
     fi
