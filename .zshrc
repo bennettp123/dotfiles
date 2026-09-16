@@ -91,7 +91,9 @@ function _az2aws() {
       echo 'installing az2aws...' >&2
         npm install -g az2aws >&2
     fi
-    AWS_PROFILE=aad nodenv exec az2aws "${@:---no-prompt}"
+    AWS_PROFILE=aad \
+      BROWSER_CHROME_BIN="${BROWSER_CHROME_BIN:-/Applications/Chromium.app/Contents/MacOS/Chromium}" \
+      nodenv exec az2aws "${@:---no-prompt}"
   )
 }
 
