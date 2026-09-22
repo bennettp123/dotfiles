@@ -25,3 +25,6 @@ export HOMEBREW_NO_ANALYTICS=1
 # default AWS profile: authenticates using `aws-azure-login`
 export "AWS_PROFILE=${AWS_PROFILE:-aad}"
 
+# https://storybook.js.org/docs/configure/telemetry#how-to-opt-out
+export STORYBOOK_DISABLE_TELEMETRY=true
+
