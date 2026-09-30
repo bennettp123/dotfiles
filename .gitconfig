@@ -40,3 +40,5 @@
 [url "git@github.com:West-Australian-Newspapers/stibodx-cocoapods.git"]
   insteadOf = "https://jira.stibodx.com/stash/scm/ccidist/cocoapods.git"
 
+[url "git@github.com:West-Australian-Newspapers/sibodx-cocoapods.git"]
+	insteadOf = https://bitbucket.org/stibodx/cocoapods.git
