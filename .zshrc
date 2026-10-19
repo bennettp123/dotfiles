@@ -86,14 +86,12 @@ fi
 function _az2aws() {
   ## todo use [mise](https://mise.jdx.dev) instead?
   ( set -e
-    nodenv shell 24
+    nodenv shell 26
     if ! nodenv exec npm ls -g az2aws >/dev/null 2>&1; then
       echo 'installing az2aws...' >&2
         npm install -g az2aws >&2
     fi
-    AWS_PROFILE=aad \
-      BROWSER_CHROME_BIN="${BROWSER_CHROME_BIN:-/Applications/Chromium.app/Contents/MacOS/Chromium}" \
-      nodenv exec az2aws "${@:---no-prompt}"
+    AWS_PROFILE=aad nodenv exec az2aws "${@:---no-prompt}"
   )
 }
 
