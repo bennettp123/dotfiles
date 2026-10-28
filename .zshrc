@@ -187,12 +187,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:${HOME}/.lmstudio/bin"
-# End of LM Studio CLI section
-
 # set up ccache
 path=("$(brew --prefix)/opt/ccache/libexec" $path)
 
@@ -224,3 +218,8 @@ fpath=(/Users/bennett.perkins/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:${HOME}/.lmstudio/bin"
+# End of LM Studio CLI section
+
