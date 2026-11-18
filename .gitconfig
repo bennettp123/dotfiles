@@ -31,14 +31,14 @@
 [log]
   abbrevCommit = true
 
-[url "ssh://git@bitbucket.stibodx.com:7999/ccidist/cocoapods-rc.git"]
-  insteadOf = "https://jira.stibodx.com/stash/scm/ccidist/cocoapods-rc.git"
+#[url "ssh://git@bitbucket.stibodx.com:7999/ccidist/cocoapods-rc.git"]
+#  insteadOf = "https://jira.stibodx.com/stash/scm/ccidist/cocoapods-rc.git"
 
 [pull]
   ff = only
 
 [url "git@github.com:West-Australian-Newspapers/stibodx-cocoapods.git"]
   insteadOf = "https://jira.stibodx.com/stash/scm/ccidist/cocoapods.git"
+  insteadOf = https://bitbucket.org/stibodx/cocoapods.git
+  insteadOf = git@ssh.bitbucket.org:stibodx/cocoapods.git
 
-[url "git@github.com:West-Australian-Newspapers/sibodx-cocoapods.git"]
-	insteadOf = https://bitbucket.org/stibodx/cocoapods.git
